@@ -25,6 +25,7 @@ jobs:
       - name: Check source and version
         run: |
           npm test
+          python3 -m unittest discover -s tests -p 'test_*.py'
           version="$(node -p 'require("./package.json").version')"
           if [[ "$GITHUB_REF" == refs/tags/* && "$GITHUB_REF_NAME" != "v$version" ]]; then
             echo 'Git tag must match package.json version'; exit 1
