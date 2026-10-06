@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=RIFT OS Gaming Center
+Comment=Your games, launchers, and hardware
+Exec=/usr/local/bin/rift-center
+Icon=applications-games
+Terminal=false
+Categories=Game;Settings;

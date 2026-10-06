@@ -1,0 +1,10 @@
+node_modules/
+artifacts/
+*.log
+*.iso
+*.zip
+.tools/
+build/work/
+build/cache/
+dist/
+node_modules/

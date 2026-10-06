@@ -1,0 +1,25 @@
+name: Source checks
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  checks:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: npm test
+      - name: Validate Bash scripts
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y shellcheck
+          find linux build release -name '*.sh' -print0 | xargs -0 -n1 bash -n
+          shellcheck -x -e SC1091 linux/*.sh build/*.sh release/*.sh
+          bash build/build-iso.sh --plan
+      - name: Browser checks
+        run: |
+          npm install --no-save playwright
+          npx playwright install --with-deps chromium
+          npm run test:ui

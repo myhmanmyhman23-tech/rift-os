@@ -1,0 +1,8 @@
+{
+  "name": "rift-os-control-center",
+  "version": "0.2.0-alpha.1",
+  "private": true,
+  "description": "RIFT OS gaming control center and Linux provisioning profile",
+  "scripts": {"start":"node server.cjs", "test":"node --test tests/backend.test.cjs", "test:ui":"node tests/browser.cjs"},
+  "engines": {"node":">=18"}
+}

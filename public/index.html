@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0c0e15"><title>RIFT OS / Gaming Center</title><link rel="stylesheet" href="/style.css"></head>
+<body>
+  <aside class="sidebar">
+    <a class="logo" href="/"><span>◈</span><div>RIFT<span class="os">OS</span><small>PLAY WITHOUT LIMITS</small></div></a>
+    <div class="nav-label">ТВОЁ ПРОСТРАНСТВО</div>
+    <nav aria-label="Главная навигация"><button class="nav active" data-view="library"><span>▦</span>Библиотека <b>04</b></button><button class="nav" data-view="hardware"><span>◉</span>Оборудование</button><button class="nav" data-view="downloads"><span>↓</span>Установки <b id="job-count">0</b></button></nav>
+    <div class="nav-label launcher-label">ЛАУНЧЕРЫ</div><div id="launcher-nav"></div>
+    <div class="sidebar-bottom"><div class="build"><i></i> DEVELOPMENT BUILD <span>0.2</span></div><button class="nav" data-view="about"><span>⌘</span>О системе</button><div class="user"><div class="avatar">P</div><div>Player One<small>Твоё игровое пространство</small></div><span>✦</span></div></div>
+  </aside>
+  <div class="workspace">
+    <header><div class="breadcrumb">ПРОСТРАНСТВО <span>/</span> <strong id="crumb">БИБЛИОТЕКА</strong></div><div class="header-tools"><span class="system-badge" id="system-badge">● ПОДКЛЮЧЕНИЕ</span><button id="refresh" class="small-button" title="Обновить состояние">↻</button></div></header>
+    <main>
+      <div id="connection-error" class="notice hidden" role="alert">Не удалось подключиться к игровому центру. <button id="retry">Повторить</button></div>
+      <div id="preview-notice" class="notice hidden"><span>◌</span><div><strong>Сейчас ты в предпросмотре на Windows.</strong> Библиотека и диагностика доступны. Установка Linux-лаунчеров включится при запуске центра в Linux.</div><span class="notice-tag">PREVIEW</span></div>
+      <section id="view-library" class="view">
+        <div class="hero"><div class="hero-copy"><div class="eyebrow"><i></i> ТВОЯ НОВАЯ ИГРОВАЯ СИСТЕМА</div><h1>Меньше настроек.<br>Больше <em>игры.</em></h1><p>Твои миры, любимые игры и нужные лаунчеры.<br>В одном пространстве. Под твоим контролем.</p><button id="exe-button" class="primary">＋ Windows-приложение <span>↗</span></button><span class="hero-note">Мастер запуска через Bottles</span></div><div class="hero-art" aria-hidden="true"><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="orbit orbit-three"></div><div class="planet"><span>◈</span></div><div class="orbit-label label-one">RIFT / CORE 001</div><div class="orbit-label label-two">A NEW WAY TO PLAY</div><div class="star s1">✦</div><div class="star s2">✦</div><div class="star s3">✦</div></div><div class="hero-footer"><span>UBUNTU LTS <b>+</b> KDE PLASMA</span><span>YOUR HARDWARE. YOUR RULES.</span></div></div>
+        <div class="library-heading"><div><span class="eyebrow">ЧЕТЫРЕ МИРА. ОДНА БИБЛИОТЕКА.</span><h2>Твои игры <span>04</span></h2></div><label class="search"><span>⌕</span><input id="search" type="search" placeholder="Найти игру…" aria-label="Найти игру"><kbd>/</kbd></label></div>
+        <div class="filters" role="group" aria-label="Фильтр библиотеки"><button class="filter active" data-filter="all">Все игры <span>4</span></button><button class="filter" data-filter="native">Нативный Linux</button><button class="filter" data-filter="experimental">Через совместимость</button></div>
+        <div id="game-grid" class="game-grid"></div><p id="empty" class="empty hidden">Таких игр пока нет в библиотеке.</p>
+        <div class="bottom-cards"><div class="bottom-card"><span class="card-icon">◉</span><div><h3>Знай своё железо</h3><p>Процессор, графика и готовность Vulkan.</p></div><button data-goto="hardware" aria-label="Открыть оборудование">↗</button></div><div class="bottom-card"><span class="card-icon purple">⌁</span><div><h3>Каждой игре — своё окружение</h3><p>Windows-приложения через Bottles.</p></div><button id="exe-shortcut" aria-label="Открыть мастер Windows-приложений">↗</button></div></div>
+      </section>
+      <section id="view-hardware" class="view hidden"><div class="page-heading"><div class="eyebrow">ОБОРУДОВАНИЕ / ДИАГНОСТИКА</div><h1>Готовность системы.</h1><p>Реальные данные этого компьютера. Неизвестные параметры не считаются исправными.</p></div><div id="hardware-grid" class="hardware-grid"></div><div class="info-panel"><h3>Как подготавливаются драйверы</h3><p>Linux-драйверы, прошивки и библиотеки графики устанавливаются скриптом подготовки. Для NVIDIA используется рекомендованный пакет Ubuntu. При необходимости система запросит перезагрузку или регистрацию ключа Secure Boot.</p><p>В этой версии подготовка выполняется в Linux вручную. Установочный ISO и автоматический первый запуск — следующие этапы.</p></div></section>
+      <section id="view-downloads" class="view hidden"><div class="page-heading"><div class="eyebrow">УСТАНОВКИ / АКТИВНОСТЬ</div><h1>Всё под контролем.</h1><p>Результаты установки лаунчеров и журнал ошибок.</p></div><div id="jobs"></div></section>
+      <section id="view-about" class="view hidden"><div class="page-heading"><div class="eyebrow">RIFT OS / VERSION 0.2.0-alpha.1</div><h1>Твоя система.<br>Твоё пространство.</h1><p>Первый этап разработки игрового Linux на основе Ubuntu 24.04 LTS и KDE.</p></div><div class="info-panel"><h3>Что уже работает</h3><p>Библиотека профилей, диагностика оборудования, установка и запуск Linux-лаунчеров через Flatpak, журнал установок и мастер Windows-приложений.</p><h3>Что ещё впереди</h3><p>Сборка загрузочного ISO, оформление рабочего стола, автоматический первый запуск, тестирование Battle.net и HoYoPlay, профили производительности и резервные копии сохранений.</p><h3>Совместимость без обещаний</h3><p>Наличие профиля не означает, что игра установлена или проверена. Overwatch через Battle.net и Genshin через HoYoPlay пока требуют тестирования на Linux.</p></div></section>
+      <footer><span>◈ RIFT OS <span class="footer-divider">/</span> BUILT FOR YOUR NEXT SESSION</span><span>CONTROL CENTER · v0.2.0-alpha.1</span></footer>
+    </main>
+  </div>
+  <dialog id="modal"><div id="modal-body"></div></dialog><div id="toast" class="toast hidden" role="status"></div>
+  <script src="/app.js"></script>
+</body></html>
