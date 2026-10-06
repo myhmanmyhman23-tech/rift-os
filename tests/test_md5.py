@@ -7,6 +7,18 @@ import unittest
 
 
 class MediumIntegrityTests(unittest.TestCase):
+    def test_base_without_md5_list_gets_checks_for_modified_files(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = pathlib.Path(temporary)
+            for name in ("filesystem.squashfs", "filesystem.manifest", "filesystem.size"):
+                (root / name).write_bytes(b"data")
+            output = root / "updated.txt"
+            subprocess.run([
+                sys.executable, str(pathlib.Path(__file__).parents[1] / "build/update-md5.py"),
+                str(root / "absent.txt"), str(root), str(output),
+            ], check=True)
+            self.assertEqual(len(output.read_text().splitlines()), 3)
+
     def test_remastered_entries_change_and_other_files_keep_their_hash(self):
         with tempfile.TemporaryDirectory() as temporary:
             root = pathlib.Path(temporary)
